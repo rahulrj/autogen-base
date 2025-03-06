@@ -26,7 +26,7 @@ class HuggingFaceAPIClient:
         return response.json()
 
 # Example usage
-hf_client = HuggingFaceAPIClient(api_key="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")
+hf_client = HuggingFaceAPIClient(api_key="HUGGINGFACE_KEY")
 
 # Custom AssistantAgent Wrapper
 class CustomAssistantAgent(AssistantAgent):
