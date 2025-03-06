@@ -1,6 +1,7 @@
 from autogen_agentchat.agents import AssistantAgent
 import random
 from prompt import *
+from keys import *
 
 
 import requests
@@ -26,7 +27,7 @@ class HuggingFaceAPIClient:
         return response.json()
 
 # Example usage
-hf_client = HuggingFaceAPIClient(api_key="HUGGINGFACE_KEY")
+hf_client = HuggingFaceAPIClient(api_key=HUGGINGFACE_KEY)
 
 # Custom AssistantAgent Wrapper
 class CustomAssistantAgent(AssistantAgent):
