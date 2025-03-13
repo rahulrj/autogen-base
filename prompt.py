@@ -115,3 +115,20 @@ Return an array of JSON objects. Each JSON object should have category, score an
 """
 
 
+
+DEPRESSION_TREATMENT_LABELS = {
+    "Lately, I just don't feel like doing the things I used to enjoy. I used to love painting, but now even picking up a brush feels like a chore.": "Counseling",
+    "I feel tired all the time, even after a full night's sleep. It’s like my body is running on low battery, and I just can't recharge.": "Counseling",
+    "Sometimes, I feel down for no apparent reason. I can still function, but there’s this underlying sadness that just doesn’t go away.": "Counseling",
+    "I’ve been eating less than usual, not because I’m trying to, but because food just doesn’t seem appealing anymore.": "Counseling",
+    "It takes so much effort to get out of bed in the morning. I know I have things to do, but I keep hitting snooze and lying there, staring at the ceiling.": "No treatment necessary",
+    "I find myself zoning out at work, struggling to concentrate. I used to be so sharp, but now even small tasks seem overwhelming.": "Counseling",
+    "I feel like I’m failing at everything—my job, my relationships, even basic self-care. It’s like no matter what I do, it’s never enough.": "Pharmaceutical Therapy",
+    "I don’t talk to my friends as much anymore. They invite me out, but I always find an excuse to stay home. It just feels easier to be alone.": "Counseling",
+    "I feel like I’m moving through life in slow motion. Conversations, work, even getting dressed feels like a monumental effort.": "Pharmaceutical Therapy",
+    "Sometimes, I wonder if people would even notice if I disappeared. The thoughts creep in at night, and I can't seem to shake them off.": "Pharmaceutical Therapy"
+}
+
+
+
+

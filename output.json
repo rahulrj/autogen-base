@@ -1,19 +1,9 @@
 {
-    "generated_text_sample": "I don\u2019t talk to my friends as much anymore. They invite me out, but I always find an excuse to stay home. It just feels easier to be alone.",
-    "mapped_response": {
-        "symptoms": {
-            "This person exhibits symptoms in the following categories": 1
-        },
-        "total_score": 1,
-        "classification": "Not Depressed"
-    },
-    "treatment_recommendation": {
-        "recommendation": "No treatment necessary"
-    },
-    "ground_truth_label": "Mildly Depressed",
-    "evaluation_result": {
-        "predicted_label": "Not Depressed",
-        "ground_truth_label": "Mildly Depressed",
-        "evaluation": "Incorrect"
+    "results": [],
+    "metrics": {
+        "accuracy": 0.1,
+        "precision": 0.5,
+        "recall": 0.1,
+        "f1_score": 0.13333333333333333
     }
 }
