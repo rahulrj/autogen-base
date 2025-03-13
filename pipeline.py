@@ -18,7 +18,7 @@ class HuggingFaceAPIClient:
             "inputs": prompt,
             "parameters": {
                 "max_new_tokens": 150,
-                "temperature": 0.7,
+                "temperature": 0.5,
                 "top_p": 0.9,
                 "do_sample": True
             }
@@ -27,7 +27,7 @@ class HuggingFaceAPIClient:
         return response.json()
 
 # Example usage
-hf_client = HuggingFaceAPIClient(api_key=HUGGINGFACE_KEY)
+hf_client = HuggingFaceAPIClient(api_key=HUGGINGFACE_KEY2)
 
 # Custom AssistantAgent Wrapper
 class CustomAssistantAgent(AssistantAgent):
