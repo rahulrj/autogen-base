@@ -107,12 +107,34 @@ Now, extract and classify the relevant symptoms from this text and assign an app
 
 Return the extracted symptoms in a structured format, listing each PHQ-9 category, the symptom description, and the severity score.
 
-
 **STRICT JSON RESPONSE REQUIRED!**
-You MUST return output in **valid JSON format ONLY** with NO explanations or additional text.
-Return an array of JSON objects. Each JSON object should have category, score and symptom.
+You MUST return output in **valid JSON format ONLY** with NO explanations or additional text. The below is an example of JSON
+format that i am looking for.
+
+### JSON Output Format:
+[
+  {{
+    "category": "<PHQ9 category>",
+    "score": <PHQ9 category severity score>,
+    "symptom": <Symptom which justifies the score>
+  }},
+  {{
+    "category": "<PHQ9 category>",
+    "score": <PHQ9 category severity score>,
+    "symptom": <Symptom which justifies the score>
+  }},
+  {{
+    "category": "<PHQ9 category>",
+    "score": <PHQ9 category severity score>,
+    "symptom": <Symptom which justifies the score>
+  }}
+]
+
+ DO NOT WRITE ANY TEXT AFTER THE JSON OUTPUT.
 
 """
+
+
 
 
 

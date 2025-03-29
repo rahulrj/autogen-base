@@ -19,17 +19,17 @@ PHQ9_CATEGORY_MAPPING = {
 class PHQ9Entry(BaseModel):
     phq: str  # Mapped PHQ-9 category name
     symptom: str  # Extracted symptom description
-    score: int = Field(..., ge=-1, le=4)  # Score (0-4)
+    score: int = Field(..., ge=0, le=4)  # Score (0-4)
 
 class PHQ9Response(BaseModel):
     responses: List[PHQ9Entry]  # List of PHQ-9 responses
-    total_score: int = Field(..., ge=-1, le=36)  # PHQ-9 total score
+    total_score: int = Field(..., ge=0, le=36)  # PHQ-9 total score
 
     @classmethod
     def ensure_valid_response(cls, responses: List[PHQ9Entry]):
         """Ensure structured response follows PHQ-9 format."""
         if not responses:
-            responses = [PHQ9Entry(phq="Unknown", symptom="No symptoms detected", score=-1)]
+            responses = [PHQ9Entry(phq="Unknown", symptom="No symptoms detected", score=0)]
         total_score = sum(entry.score for entry in responses)
         return cls(responses=responses, total_score=total_score)
 
@@ -37,7 +37,7 @@ class PHQ9Response(BaseModel):
 
 
 class PHQ9ScoreResponse(BaseModel):
-    total_score: int = Field(..., ge=-1, le=36)  # PHQ-9 total score
+    total_score: int = Field(..., ge=0, le=36)  # PHQ-9 total score
     classification: str  # "Not Depressed", "Mildly Depressed", "Quite Depressed"
 
     @classmethod
@@ -47,8 +47,6 @@ class PHQ9ScoreResponse(BaseModel):
 
 def classify_depression(total_score: int) -> str:
     """Classify depression based on total PHQ-9 score"""
-    if total_score == -1:
-        return "Error from LLM"
     if total_score < 4:
         return "Not Depressed"
     elif total_score <= 10:
@@ -65,8 +63,6 @@ class TreatmentRecommendationResponse(BaseModel):
     @classmethod
     def from_phq9_score(cls, phq9_score: PHQ9ScoreResponse):
         """Determine recommendation based on PHQ-9 score"""
-        if(phq9_score.total_score == -1):
-            return cls(recommendation="Error from LLM")
         if phq9_score.total_score < 4:
             return cls(recommendation="No treatment necessary")
         elif phq9_score.total_score <= 10:

@@ -63,7 +63,7 @@ def map_to_phq9(text_sample) -> PHQ9Response:
     mapping_prompt = PHQ9_MAPPING_PROMPT_NEW.format(text_sample=text_sample)
     response_text = schema_mapping_agent.generate_reply(messages=[{"role": "user", "content": mapping_prompt}])
 
-    # print("DEBUG - Raw LLM Response:", response_text)  # Debugging
+    print("DEBUG - Raw LLM Response:", response_text)  # Debugging
 
     try:
         json_match = re.search(r"\[.*\]", response_text, re.DOTALL)  # Extract list format
