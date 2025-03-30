@@ -1,19 +1,19 @@
 {
     "results": [],
     "metrics": {
-        "accuracy": 0.2,
-        "precision": 0.5,
-        "recall": 0.2,
-        "f1_score": 0.2,
-        "error_from_llm": 0
+        "accuracy": 0.2222222222222222,
+        "precision": 0.5555555555555556,
+        "recall": 0.2222222222222222,
+        "f1_score": 0.2222222222222222,
+        "error_from_llm": 1
     },
     "token_usage": {
         "total_prompt_tokens": 4479,
-        "total_completion_tokens": 5061
+        "total_completion_tokens": 5058
     },
     "performance": {
-        "execution_time_seconds": 4.554698944091797,
-        "current_memory_usage_MB": 12.124884,
-        "peak_memory_usage_MB": 21.341641
+        "execution_time_seconds": 13.705013990402222,
+        "current_memory_usage_MB": 12.125921,
+        "peak_memory_usage_MB": 21.346121
     }
 }
