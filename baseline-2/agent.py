@@ -100,6 +100,7 @@ def generate_recommendation(phq9_score: PHQ9ScoreResponse) -> TreatmentRecommend
     recommendation_prompt = RECOMMENDATION_PROMPT.format(phq9_score=phq9_score.total_score)
     response_text = recommendation_agent.generate_reply(messages=[{"role": "user", "content": recommendation_prompt}])
 
+    print("RESPONSE", response_text)
     try:
         match = re.search(r"Recommendation:\s*(Error from LLM|No treatment necessary|Counseling|Pharmaceutical Therapy)", response_text, re.IGNORECASE)
         if match:
