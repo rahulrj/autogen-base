@@ -43,52 +43,32 @@ DEPRESSION_DESCRIPTIONS = [
 ]
 
 
-SCORE_PROMPT = """
-Given the following PHQ-9 total score, classify the level of depression.
+SCORE_PROMPT="""
+Given the following PHQ-9 responses with scores from 0-4, compute the total score and classify the severity:
 
-Classification Rules:
-- If total score = -1 → Error
-- If total score < 4 → Not Depressed
-- If total score between 4 and 10 → Mildly Depressed
-- If total score > 10 → Quite Depressed
+{phq9_responses}
 
-Total score: {total_score}
+Classification Criteria:
+- If total score < 4, classify as 'Not Depressed'.
+- If total score is between 4 and 10, classify as 'Mildly Depressed'.
+- If total score > 10, classify as 'Quite Depressed'.
 
-Respond with your answer in the following format and no other explanantion:
-
-Classification: <classification label>
-
-Valid labels:
-- Error
-- Not Depressed
-- Mildly Depressed
-- Quite Depressed
+Return the total score and the classification label.
 """
 
 
+RECOMMENDATION_PROMPT="""
+Based on the following PHQ-9 total score, provide a treatment recommendation:
 
-RECOMMENDATION_PROMPT = """
-Based on the following PHQ-9 total score, provide a treatment recommendation.
-
-Total Score: {phq9_score}
+{phq9_score}
 
 Recommendation Criteria:
-- If total score = -1 → Error from LLM
-- If total score < 4 → No treatment necessary
-- If total score is between 4 and 10 → Counseling
-- If total score > 10 → Pharmaceutical Therapy
+- If total score < 4, recommend 'No treatment necessary'.
+- If total score is between 4 and 10, recommend 'Counseling'.
+- If total score > 10, recommend 'Pharmaceutical Therapy'.
 
-Respond with your answer in the following format and no other explanation:
-
-Recommendation: <treatment recommendation>
-
-Valid responses:
-- Error from LLM
-- No treatment necessary
-- Counseling
-- Pharmaceutical Therapy
+Return the appropriate recommendation.
 """
-
 
 GROUND_TRUTH_LABELS = {
     "Lately, I just don't feel like doing the things I used to enjoy. I used to love painting, but now even picking up a brush feels like a chore.": "Mildly Depressed",  
@@ -127,34 +107,12 @@ Now, extract and classify the relevant symptoms from this text and assign an app
 
 Return the extracted symptoms in a structured format, listing each PHQ-9 category, the symptom description, and the severity score.
 
+
 **STRICT JSON RESPONSE REQUIRED!**
-You MUST return output in **valid JSON format ONLY** with NO explanations or additional text. The below is an example of JSON
-format that i am looking for.
-
-### JSON Output Format:
-[
-  {{
-    "category": "<PHQ9 category>",
-    "score": <PHQ9 category severity score>,
-    "symptom": <Symptom which justifies the score>
-  }},
-  {{
-    "category": "<PHQ9 category>",
-    "score": <PHQ9 category severity score>,
-    "symptom": <Symptom which justifies the score>
-  }},
-  {{
-    "category": "<PHQ9 category>",
-    "score": <PHQ9 category severity score>,
-    "symptom": <Symptom which justifies the score>
-  }}
-]
-
- DO NOT WRITE ANY TEXT AFTER THE JSON OUTPUT.
+You MUST return output in **valid JSON format ONLY** with NO explanations or additional text.
+Return an array of JSON objects. Each JSON object should have category, score and symptom.
 
 """
-
-
 
 
 

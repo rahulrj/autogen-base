@@ -43,18 +43,22 @@ DEPRESSION_DESCRIPTIONS = [
 ]
 
 
-SCORE_PROMPT="""
-Given the following PHQ-9 responses with scores from 0-4, compute the total score and classify the severity:
+SCORE_PROMPT = """
+Given the following PHQ-9 total score, classify the level of depression.
 
-{phq9_responses}
+Classification Rules:
+- If total score < 4 → Not Depressed
+- If total score between 4 and 10 → Mildly Depressed
+- If total score > 10 → Quite Depressed
 
-Classification Criteria:
-- If total score < 4, classify as 'Not Depressed'.
-- If total score is between 4 and 10, classify as 'Mildly Depressed'.
-- If total score > 10, classify as 'Quite Depressed'.
+Total score: {total_score}
 
-Return the total score and the classification label.
+Return ONLY one of the following classification labels (no explanation):
+- Not Depressed
+- Mildly Depressed
+- Quite Depressed
 """
+
 
 
 RECOMMENDATION_PROMPT="""

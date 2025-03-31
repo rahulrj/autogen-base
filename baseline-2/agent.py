@@ -45,7 +45,7 @@ def map_to_phq9(text_sample) -> PHQ9Response:
     mapping_prompt = PHQ9_MAPPING_PROMPT_NEW.format(text_sample=text_sample)
     response_text = schema_mapping_agent.generate_reply(messages=[{"role": "user", "content": mapping_prompt}])
 
-    print("DEBUG - Raw LLM Response:", response_text)  # Debugging
+    # print("DEBUG - Raw LLM Response:", response_text)  # Debugging
 
     try:
         json_match = re.search(r"DO NOT WRITE ANY TEXT AFTER THE JSON OUTPUT\.\s*(\[\s*{.*?}\s*\])\s*$", response_text, re.S)
@@ -76,13 +76,42 @@ def map_to_phq9(text_sample) -> PHQ9Response:
 
 
 
-
-# Compute PHQ-9 score from response
 def compute_phq9_score(phq9_response: PHQ9Response) -> PHQ9ScoreResponse:
-    return PHQ9ScoreResponse.from_phq9_response(phq9_response)
+    total_score = phq9_response.total_score
+    score_prompt = SCORE_PROMPT.format(total_score=total_score)
+    response_text = scoring_agent.generate_reply(messages=[{"role": "user", "content": score_prompt}])
+
+    try:
+        match = re.search(r"Classification:\s*(Not Depressed|Mildly Depressed|Quite Depressed|Error)", response_text, re.IGNORECASE)
+        if match:
+            classification = match.group(1)
+            return PHQ9ScoreResponse.ensure_valid_response(total_score,classification)
+        else:
+            return PHQ9ScoreResponse.ensure_valid_response(total_score,"Error")
+    except:
+        return PHQ9ScoreResponse.ensure_valid_response(total_score,"Error")
+
+
 
 
 
 # Generate treatment recommendation
 def generate_recommendation(phq9_score: PHQ9ScoreResponse) -> TreatmentRecommendationResponse:
-    return TreatmentRecommendationResponse.from_phq9_score(phq9_score)
+    recommendation_prompt = RECOMMENDATION_PROMPT.format(phq9_score=phq9_score.total_score)
+    response_text = recommendation_agent.generate_reply(messages=[{"role": "user", "content": recommendation_prompt}])
+
+    try:
+        match = re.search(r"Recommendation:\s*(Error from LLM|No treatment necessary|Counseling|Pharmaceutical Therapy)", response_text, re.IGNORECASE)
+        if match:
+            recommendation = match.group(1).strip().title()
+            print("RECOMMENDATION", recommendation)
+            return TreatmentRecommendationResponse.ensure_valid_response(recommendation=recommendation)
+        else:
+            return TreatmentRecommendationResponse.ensure_valid_response("Error from LLM")
+    except:
+        return TreatmentRecommendationResponse.ensure_valid_response("Error from LLM")
+
+
+
+
+

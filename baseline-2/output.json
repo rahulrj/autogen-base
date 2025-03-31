@@ -1,19 +1,19 @@
 {
     "results": [],
     "metrics": {
-        "accuracy": 0.2,
-        "precision": 0.5,
-        "recall": 0.2,
-        "f1_score": 0.2,
+        "accuracy": 0.0,
+        "precision": 0.4,
+        "recall": 0.0,
+        "f1_score": 0.0,
         "error_from_llm": 0
     },
     "token_usage": {
-        "total_prompt_tokens": 4479,
-        "total_completion_tokens": 5061
+        "total_prompt_tokens": 6859,
+        "total_completion_tokens": 7544
     },
     "performance": {
-        "execution_time_seconds": 4.554698944091797,
-        "current_memory_usage_MB": 12.124884,
-        "peak_memory_usage_MB": 21.341641
+        "execution_time_seconds": 10.964403867721558,
+        "current_memory_usage_MB": 12.164483,
+        "peak_memory_usage_MB": 21.342445
     }
 }
