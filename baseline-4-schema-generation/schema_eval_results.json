@@ -1,0 +1,356 @@
+[
+  {
+    "input_text": "Lately, I just don't feel like doing the things I used to enjoy. I used to love painting, but now even picking up a brush feels like a chore. I\u2019ll stare at my supplies for hours, hoping for a spark, but it never comes. It feels like that joy has vanished, and I don\u2019t know how to bring it back. Even when I try, something inside me just refuses to engage.",
+    "generated_output": "You are given a task: Diagnose depression from free-form text input by patients.\n\nYour goal is to generate a JSON schema that defines the structure of information needed to solve this task.\n\nHere are some examples:\n\nInput:\n\"I feel down most of the day and have trouble sleeping.\"\n\nExpected Output:\n{\n  \"feeling_down\": 4,\n  \"sleep_problems\": 3\n}\n\nAnother Input:\n\"I'm constantly tired and don't enjoy things I used to.\"\n\nExpected Output:\n{\n  \"energy_level\": 3,\n  \"loss_of_interest\": 4\n}\n\nNow, based on the following patient input, generate a JSON schema (keys and values) needed to analyze it:\n\nPatient input:\n\"Lately, I just don't feel like doing the things I used to enjoy. I used to love painting, but now even picking up a brush feels like a chore. I\u2019ll stare at my supplies for hours, hoping for a spark, but it never comes. It feels like that joy has vanished, and I don\u2019t know how to bring it back. Even when I try, something inside me just refuses to engage.\"\n\nOutput only the schema as a JSON object.\n\n```json\n{\n  \"enjoyment_of_hobbies\": 1,\n  \"motivation\": 2,\n  \"joy\": 3,\n  \"engagement\": 4\n}\n```\n\nThe schema is based on the key phrases from the patient input that seem relevant to the symptoms of depression:\n\n1. enjoyment_of_hobbies: The patient mentions not enjoying things they used to, so we can infer that their enjoyment of hobbies has decreased.\n2. motivation: The patient mentions having trouble starting to paint, which could indicate a lack of motivation.\n3. joy: The patient mentions that the joy has vanished, so we can infer that their level of joy is low.\n4. engagement: The patient mentions that something inside them refuses to engage, suggesting a lack of engagement in activities.",
+    "schema": {
+      "enjoyment_of_hobbies": 1,
+      "motivation": 2,
+      "joy": 3,
+      "engagement": 4
+    },
+    "score_result": {
+      "score": 0.0,
+      "matched": [],
+      "missing": [
+        "self_worth",
+        "energy_level",
+        "suicidal_thoughts",
+        "sleep_problems",
+        "concentration_difficulty",
+        "feeling_down",
+        "appetite_change",
+        "motor_activity_change",
+        "loss_of_interest"
+      ],
+      "extra": [
+        "engagement",
+        "motivation",
+        "enjoyment_of_hobbies",
+        "joy"
+      ],
+      "total_keys": 4
+    }
+  },
+  {
+    "input_text": "I feel tired all the time, even after a full night's sleep. No matter how much rest I get, my body feels like it's carrying a weight I can\u2019t shake off. It\u2019s a constant fatigue that makes even the smallest tasks feel overwhelming. I find myself longing for sleep during the day but waking up just as exhausted. Everything feels like a chore.",
+    "generated_output": "You are given a task: Diagnose depression from free-form text input by patients.\n\nYour goal is to generate a JSON schema that defines the structure of information needed to solve this task.\n\nHere are some examples:\n\nInput:\n\"I feel down most of the day and have trouble sleeping.\"\n\nExpected Output:\n{\n  \"feeling_down\": 4,\n  \"sleep_problems\": 3\n}\n\nAnother Input:\n\"I'm constantly tired and don't enjoy things I used to.\"\n\nExpected Output:\n{\n  \"energy_level\": 3,\n  \"loss_of_interest\": 4\n}\n\nNow, based on the following patient input, generate a JSON schema (keys and values) needed to analyze it:\n\nPatient input:\n\"I feel tired all the time, even after a full night's sleep. No matter how much rest I get, my body feels like it's carrying a weight I can\u2019t shake off. It\u2019s a constant fatigue that makes even the smallest tasks feel overwhelming. I find myself longing for sleep during the day but waking up just as exhausted. Everything feels like a chore.\"\n\nOutput only the schema as a JSON object.\n\n```\n{\n  \"energy_level\": 1,\n  \"sleep_quality\": 1,\n  \"feeling_tired_despite_sleep\": 5,\n  \"fatigue_overwhelming\": 4,\n  \"daytime_sleepiness\": 3,\n  \"longing_for_sleep\": 3,\n  \"everything_feels_like_a_chore\": 4\n}\n```\n\nThis schema takes into account the patient's feelings of constant tiredness, poor sleep quality, fatigue, daytime sleepiness, longing for sleep, and the overall impact on their daily activities.",
+    "schema": {
+      "energy_level": 1,
+      "sleep_quality": 1,
+      "feeling_tired_despite_sleep": 5,
+      "fatigue_overwhelming": 4,
+      "daytime_sleepiness": 3,
+      "longing_for_sleep": 3,
+      "everything_feels_like_a_chore": 4
+    },
+    "score_result": {
+      "score": 0.11,
+      "matched": [
+        "energy_level"
+      ],
+      "missing": [
+        "self_worth",
+        "suicidal_thoughts",
+        "sleep_problems",
+        "concentration_difficulty",
+        "feeling_down",
+        "appetite_change",
+        "motor_activity_change",
+        "loss_of_interest"
+      ],
+      "extra": [
+        "daytime_sleepiness",
+        "fatigue_overwhelming",
+        "everything_feels_like_a_chore",
+        "sleep_quality",
+        "feeling_tired_despite_sleep",
+        "longing_for_sleep"
+      ],
+      "total_keys": 7
+    }
+  },
+  {
+    "input_text": "Sometimes, I feel down for no apparent reason. I go about my day, pretending I\u2019m fine, but inside there\u2019s this heaviness that never lifts. I laugh at jokes, I talk to people\u2014but it all feels distant and disconnected. I wish I could explain it, but there isn\u2019t always a reason, and that\u2019s the hardest part. I\u2019m just tired of feeling this way.",
+    "generated_output": "You are given a task: Diagnose depression from free-form text input by patients.\n\nYour goal is to generate a JSON schema that defines the structure of information needed to solve this task.\n\nHere are some examples:\n\nInput:\n\"I feel down most of the day and have trouble sleeping.\"\n\nExpected Output:\n{\n  \"feeling_down\": 4,\n  \"sleep_problems\": 3\n}\n\nAnother Input:\n\"I'm constantly tired and don't enjoy things I used to.\"\n\nExpected Output:\n{\n  \"energy_level\": 3,\n  \"loss_of_interest\": 4\n}\n\nNow, based on the following patient input, generate a JSON schema (keys and values) needed to analyze it:\n\nPatient input:\n\"Sometimes, I feel down for no apparent reason. I go about my day, pretending I\u2019m fine, but inside there\u2019s this heaviness that never lifts. I laugh at jokes, I talk to people\u2014but it all feels distant and disconnected. I wish I could explain it, but there isn\u2019t always a reason, and that\u2019s the hardest part. I\u2019m just tired of feeling this way.\"\n\nOutput only the schema as a JSON object.\n\n```\n{\n  \"feeling_down_frequency\": 3,\n  \"feeling_disconnected\": 4,\n  \"energy_level\": 2,\n  \"wish_to_explain_feelings\": 1\n}\n```\n\nIn this example, I've inferred the following:\n\n- \"Sometimes, I feel down for no apparent reason\" indicates a frequency of feeling down (3: sometimes).\n- \"I go about my day, pretending I\u2019m fine, but inside there\u2019s this heaviness that never lifts\" suggests a feeling of disconnection (4: inside, heaviness, never lifts).\n- \"I laugh at jokes, I talk to people\u2014but it all feels distant and disconnected\" could imply a low energy level (2: laugh, talk, distant, disconnected).\n- \"I wish I could explain it, but there isn\u2019t always a reason, and that\u2019s the hardest part\" indicates a desire to explain feelings (1: wish).",
+    "schema": {
+      "feeling_down_frequency": 3,
+      "feeling_disconnected": 4,
+      "energy_level": 2,
+      "wish_to_explain_feelings": 1
+    },
+    "score_result": {
+      "score": 0.11,
+      "matched": [
+        "energy_level"
+      ],
+      "missing": [
+        "self_worth",
+        "suicidal_thoughts",
+        "sleep_problems",
+        "concentration_difficulty",
+        "feeling_down",
+        "appetite_change",
+        "motor_activity_change",
+        "loss_of_interest"
+      ],
+      "extra": [
+        "wish_to_explain_feelings",
+        "feeling_disconnected",
+        "feeling_down_frequency"
+      ],
+      "total_keys": 4
+    }
+  },
+  {
+    "input_text": "I\u2019ve been eating less than usual\u2014not intentionally, but because food just doesn\u2019t appeal to me anymore. I used to love cooking and trying new dishes, but now I barely want to eat. Meals feel like obligations rather than enjoyment. Sometimes I skip them entirely, not out of discipline, but because I forget or just don\u2019t care.",
+    "generated_output": "You are given a task: Diagnose depression from free-form text input by patients.\n\nYour goal is to generate a JSON schema that defines the structure of information needed to solve this task.\n\nHere are some examples:\n\nInput:\n\"I feel down most of the day and have trouble sleeping.\"\n\nExpected Output:\n{\n  \"feeling_down\": 4,\n  \"sleep_problems\": 3\n}\n\nAnother Input:\n\"I'm constantly tired and don't enjoy things I used to.\"\n\nExpected Output:\n{\n  \"energy_level\": 3,\n  \"loss_of_interest\": 4\n}\n\nNow, based on the following patient input, generate a JSON schema (keys and values) needed to analyze it:\n\nPatient input:\n\"I\u2019ve been eating less than usual\u2014not intentionally, but because food just doesn\u2019t appeal to me anymore. I used to love cooking and trying new dishes, but now I barely want to eat. Meals feel like obligations rather than enjoyment. Sometimes I skip them entirely, not out of discipline, but because I forget or just don\u2019t care.\"\n\nOutput only the schema as a JSON object.\n\n```\n{\n  \"appetite_loss\": 4,\n  \"loss_of_interest_in_cooking\": 4,\n  \"meals_as_obligations\": 3,\n  \"skipping_meals_not_out_of_discipline\": 3\n}\n```",
+    "schema": {
+      "appetite_loss": 4,
+      "loss_of_interest_in_cooking": 4,
+      "meals_as_obligations": 3,
+      "skipping_meals_not_out_of_discipline": 3
+    },
+    "score_result": {
+      "score": 0.0,
+      "matched": [],
+      "missing": [
+        "self_worth",
+        "energy_level",
+        "suicidal_thoughts",
+        "sleep_problems",
+        "concentration_difficulty",
+        "feeling_down",
+        "appetite_change",
+        "motor_activity_change",
+        "loss_of_interest"
+      ],
+      "extra": [
+        "appetite_loss",
+        "loss_of_interest_in_cooking",
+        "meals_as_obligations",
+        "skipping_meals_not_out_of_discipline"
+      ],
+      "total_keys": 4
+    }
+  },
+  {
+    "input_text": "It takes so much effort to get out of bed in the morning. I wake up and just lie there, staring at the ceiling, dreading the day. I hit snooze again and again, hoping something will change. It\u2019s not that I\u2019m lazy\u2014I just feel like I\u2019m dragging myself through life. Getting up feels like climbing a mountain with no summit in sight.",
+    "generated_output": "You are given a task: Diagnose depression from free-form text input by patients.\n\nYour goal is to generate a JSON schema that defines the structure of information needed to solve this task.\n\nHere are some examples:\n\nInput:\n\"I feel down most of the day and have trouble sleeping.\"\n\nExpected Output:\n{\n  \"feeling_down\": 4,\n  \"sleep_problems\": 3\n}\n\nAnother Input:\n\"I'm constantly tired and don't enjoy things I used to.\"\n\nExpected Output:\n{\n  \"energy_level\": 3,\n  \"loss_of_interest\": 4\n}\n\nNow, based on the following patient input, generate a JSON schema (keys and values) needed to analyze it:\n\nPatient input:\n\"It takes so much effort to get out of bed in the morning. I wake up and just lie there, staring at the ceiling, dreading the day. I hit snooze again and again, hoping something will change. It\u2019s not that I\u2019m lazy\u2014I just feel like I\u2019m dragging myself through life. Getting up feels like climbing a mountain with no summit in sight.\"\n\nOutput only the schema as a JSON object.\n\n```json\n{\n  \"effort_to_get_up\": 5,\n  \"lying_in_bed\": 4,\n  \"dread_of_day\": 4,\n  \"snoozing\": 3,\n  \"feeling_lazy\": 2,\n  \"dragging_self_through_life\": 4,\n  \"climbing_mountain\": 5\n}\n```\n\nIn this schema, I've used the frequency of occurrence (1, 2, 3, 4, or 5) as a value to represent the intensity of the emotion or action mentioned by the patient. You can adjust the scale or use different values based on your analysis needs.",
+    "schema": {
+      "effort_to_get_up": 5,
+      "lying_in_bed": 4,
+      "dread_of_day": 4,
+      "snoozing": 3,
+      "feeling_lazy": 2,
+      "dragging_self_through_life": 4,
+      "climbing_mountain": 5
+    },
+    "score_result": {
+      "score": 0.0,
+      "matched": [],
+      "missing": [
+        "self_worth",
+        "energy_level",
+        "suicidal_thoughts",
+        "sleep_problems",
+        "concentration_difficulty",
+        "feeling_down",
+        "appetite_change",
+        "motor_activity_change",
+        "loss_of_interest"
+      ],
+      "extra": [
+        "dragging_self_through_life",
+        "climbing_mountain",
+        "feeling_lazy",
+        "lying_in_bed",
+        "snoozing",
+        "dread_of_day",
+        "effort_to_get_up"
+      ],
+      "total_keys": 7
+    }
+  },
+  {
+    "input_text": "I find myself zoning out at work, struggling to focus on even the simplest things. My thoughts drift constantly, and I reread the same sentence five times. I used to be sharp, quick, and attentive\u2014but now everything feels foggy. Tasks pile up and I can\u2019t keep up. It\u2019s frustrating because I know I\u2019m capable of better.",
+    "generated_output": "You are given a task: Diagnose depression from free-form text input by patients.\n\nYour goal is to generate a JSON schema that defines the structure of information needed to solve this task.\n\nHere are some examples:\n\nInput:\n\"I feel down most of the day and have trouble sleeping.\"\n\nExpected Output:\n{\n  \"feeling_down\": 4,\n  \"sleep_problems\": 3\n}\n\nAnother Input:\n\"I'm constantly tired and don't enjoy things I used to.\"\n\nExpected Output:\n{\n  \"energy_level\": 3,\n  \"loss_of_interest\": 4\n}\n\nNow, based on the following patient input, generate a JSON schema (keys and values) needed to analyze it:\n\nPatient input:\n\"I find myself zoning out at work, struggling to focus on even the simplest things. My thoughts drift constantly, and I reread the same sentence five times. I used to be sharp, quick, and attentive\u2014but now everything feels foggy. Tasks pile up and I can\u2019t keep up. It\u2019s frustrating because I know I\u2019m capable of better.\"\n\nOutput only the schema as a JSON object.\n\n```\n{\n  \"zoning_out\": 4,\n  \"focus_problems\": 5,\n  \"drifting_thoughts\": 4,\n  \"rereading_sentences\": 3,\n  \"sharpness_and_quickness\": 2,\n  \"fogginess\": 4,\n  \"task_management_issues\": 4,\n  \"frustration\": 3\n}\n```\n\nThe schema is designed to capture the key issues mentioned by the patient, with values representing the perceived severity of each issue on a scale from 1 (least severe) to 5 (most severe). The values are not absolute and can be adjusted based on the specific requirements of your analysis.",
+    "schema": {
+      "zoning_out": 4,
+      "focus_problems": 5,
+      "drifting_thoughts": 4,
+      "rereading_sentences": 3,
+      "sharpness_and_quickness": 2,
+      "fogginess": 4,
+      "task_management_issues": 4,
+      "frustration": 3
+    },
+    "score_result": {
+      "score": 0.0,
+      "matched": [],
+      "missing": [
+        "self_worth",
+        "energy_level",
+        "suicidal_thoughts",
+        "sleep_problems",
+        "concentration_difficulty",
+        "feeling_down",
+        "appetite_change",
+        "motor_activity_change",
+        "loss_of_interest"
+      ],
+      "extra": [
+        "frustration",
+        "drifting_thoughts",
+        "zoning_out",
+        "sharpness_and_quickness",
+        "focus_problems",
+        "rereading_sentences",
+        "fogginess",
+        "task_management_issues"
+      ],
+      "total_keys": 8
+    }
+  },
+  {
+    "input_text": "I feel like I\u2019m failing at everything\u2014at work, in my relationships, even with basic self-care. No matter what I do, it never feels good enough. I constantly criticize myself and feel like a burden to others. I try to stay strong, but inside, I feel like I\u2019m unraveling. It's like I\u2019m stuck in a loop of inadequacy.",
+    "generated_output": "You are given a task: Diagnose depression from free-form text input by patients.\n\nYour goal is to generate a JSON schema that defines the structure of information needed to solve this task.\n\nHere are some examples:\n\nInput:\n\"I feel down most of the day and have trouble sleeping.\"\n\nExpected Output:\n{\n  \"feeling_down\": 4,\n  \"sleep_problems\": 3\n}\n\nAnother Input:\n\"I'm constantly tired and don't enjoy things I used to.\"\n\nExpected Output:\n{\n  \"energy_level\": 3,\n  \"loss_of_interest\": 4\n}\n\nNow, based on the following patient input, generate a JSON schema (keys and values) needed to analyze it:\n\nPatient input:\n\"I feel like I\u2019m failing at everything\u2014at work, in my relationships, even with basic self-care. No matter what I do, it never feels good enough. I constantly criticize myself and feel like a burden to others. I try to stay strong, but inside, I feel like I\u2019m unraveling. It's like I\u2019m stuck in a loop of inadequacy.\"\n\nOutput only the schema as a JSON object.\n\n```json\n{\n  \"feeling_of_failure\": 5,\n  \"work_performance\": 1,\n  \"relationships\": 1,\n  \"self_care\": 1,\n  \"self_criticism\": 4,\n  \"feeling_of_burden\": 3,\n  \"emotional_strength\": 2,\n  \"emotional_state_inside\": 5,\n  \"loop_of_inadequacy\": 4\n}\n```",
+    "schema": {
+      "feeling_of_failure": 5,
+      "work_performance": 1,
+      "relationships": 1,
+      "self_care": 1,
+      "self_criticism": 4,
+      "feeling_of_burden": 3,
+      "emotional_strength": 2,
+      "emotional_state_inside": 5,
+      "loop_of_inadequacy": 4
+    },
+    "score_result": {
+      "score": 0.0,
+      "matched": [],
+      "missing": [
+        "self_worth",
+        "energy_level",
+        "suicidal_thoughts",
+        "sleep_problems",
+        "concentration_difficulty",
+        "feeling_down",
+        "appetite_change",
+        "motor_activity_change",
+        "loss_of_interest"
+      ],
+      "extra": [
+        "feeling_of_failure",
+        "feeling_of_burden",
+        "work_performance",
+        "self_care",
+        "loop_of_inadequacy",
+        "emotional_state_inside",
+        "self_criticism",
+        "emotional_strength",
+        "relationships"
+      ],
+      "total_keys": 9
+    }
+  },
+  {
+    "input_text": "I don\u2019t talk to my friends much anymore. They reach out, invite me places, but I always find an excuse to say no. I just don\u2019t have the energy to be social, and being around people feels exhausting. I know they care, but I feel more comfortable alone. Even when I\u2019m lonely, isolation feels safer.",
+    "generated_output": "You are given a task: Diagnose depression from free-form text input by patients.\n\nYour goal is to generate a JSON schema that defines the structure of information needed to solve this task.\n\nHere are some examples:\n\nInput:\n\"I feel down most of the day and have trouble sleeping.\"\n\nExpected Output:\n{\n  \"feeling_down\": 4,\n  \"sleep_problems\": 3\n}\n\nAnother Input:\n\"I'm constantly tired and don't enjoy things I used to.\"\n\nExpected Output:\n{\n  \"energy_level\": 3,\n  \"loss_of_interest\": 4\n}\n\nNow, based on the following patient input, generate a JSON schema (keys and values) needed to analyze it:\n\nPatient input:\n\"I don\u2019t talk to my friends much anymore. They reach out, invite me places, but I always find an excuse to say no. I just don\u2019t have the energy to be social, and being around people feels exhausting. I know they care, but I feel more comfortable alone. Even when I\u2019m lonely, isolation feels safer.\"\n\nOutput only the schema as a JSON object.\n\n```\n{\n  \"social_activity\": -3,\n  \"energy_level\": -4,\n  \"isolation_preference\": 4,\n  \"loneliness\": 2,\n  \"safety_perception\": 3\n}\n```\n\nThis schema captures the patient's feelings about social activity, energy level, isolation preference, loneliness, and safety perception from the given input. The values are subjective and represent the intensity of the emotion or behavior.",
+    "schema": {
+      "social_activity": -3,
+      "energy_level": -4,
+      "isolation_preference": 4,
+      "loneliness": 2,
+      "safety_perception": 3
+    },
+    "score_result": {
+      "score": 0.11,
+      "matched": [
+        "energy_level"
+      ],
+      "missing": [
+        "self_worth",
+        "suicidal_thoughts",
+        "sleep_problems",
+        "concentration_difficulty",
+        "feeling_down",
+        "appetite_change",
+        "motor_activity_change",
+        "loss_of_interest"
+      ],
+      "extra": [
+        "social_activity",
+        "loneliness",
+        "safety_perception",
+        "isolation_preference"
+      ],
+      "total_keys": 5
+    }
+  },
+  {
+    "input_text": "I feel like I\u2019m moving through life in slow motion. Every task\u2014getting dressed, brushing my teeth, making coffee\u2014feels monumental. Conversations feel like marathons, and I constantly zone out. I used to be full of energy, but now it\u2019s like I\u2019m walking through molasses. Everything takes more effort than I can give.",
+    "generated_output": "You are given a task: Diagnose depression from free-form text input by patients.\n\nYour goal is to generate a JSON schema that defines the structure of information needed to solve this task.\n\nHere are some examples:\n\nInput:\n\"I feel down most of the day and have trouble sleeping.\"\n\nExpected Output:\n{\n  \"feeling_down\": 4,\n  \"sleep_problems\": 3\n}\n\nAnother Input:\n\"I'm constantly tired and don't enjoy things I used to.\"\n\nExpected Output:\n{\n  \"energy_level\": 3,\n  \"loss_of_interest\": 4\n}\n\nNow, based on the following patient input, generate a JSON schema (keys and values) needed to analyze it:\n\nPatient input:\n\"I feel like I\u2019m moving through life in slow motion. Every task\u2014getting dressed, brushing my teeth, making coffee\u2014feels monumental. Conversations feel like marathons, and I constantly zone out. I used to be full of energy, but now it\u2019s like I\u2019m walking through molasses. Everything takes more effort than I can give.\"\n\nOutput only the schema as a JSON object.\n\n```\n{\n  \"feeling_of_slowness\": 5,\n  \"task_difficulty\": 4,\n  \"conversation_difficulty\": 3,\n  \"energy_level\": 2,\n  \"task_fatigue\": 5\n}\n```",
+    "schema": {
+      "feeling_of_slowness": 5,
+      "task_difficulty": 4,
+      "conversation_difficulty": 3,
+      "energy_level": 2,
+      "task_fatigue": 5
+    },
+    "score_result": {
+      "score": 0.11,
+      "matched": [
+        "energy_level"
+      ],
+      "missing": [
+        "self_worth",
+        "suicidal_thoughts",
+        "sleep_problems",
+        "concentration_difficulty",
+        "feeling_down",
+        "appetite_change",
+        "motor_activity_change",
+        "loss_of_interest"
+      ],
+      "extra": [
+        "conversation_difficulty",
+        "task_difficulty",
+        "feeling_of_slowness",
+        "task_fatigue"
+      ],
+      "total_keys": 5
+    }
+  },
+  {
+    "input_text": "Sometimes, I wonder if people would even notice if I disappeared. These thoughts creep in late at night when everything is quiet. I lie awake, staring at the ceiling, feeling like I don\u2019t matter. I try to shake it off, but it keeps coming back. It\u2019s a frightening feeling, and I don\u2019t know how to stop it.",
+    "generated_output": "You are given a task: Diagnose depression from free-form text input by patients.\n\nYour goal is to generate a JSON schema that defines the structure of information needed to solve this task.\n\nHere are some examples:\n\nInput:\n\"I feel down most of the day and have trouble sleeping.\"\n\nExpected Output:\n{\n  \"feeling_down\": 4,\n  \"sleep_problems\": 3\n}\n\nAnother Input:\n\"I'm constantly tired and don't enjoy things I used to.\"\n\nExpected Output:\n{\n  \"energy_level\": 3,\n  \"loss_of_interest\": 4\n}\n\nNow, based on the following patient input, generate a JSON schema (keys and values) needed to analyze it:\n\nPatient input:\n\"Sometimes, I wonder if people would even notice if I disappeared. These thoughts creep in late at night when everything is quiet. I lie awake, staring at the ceiling, feeling like I don\u2019t matter. I try to shake it off, but it keeps coming back. It\u2019s a frightening feeling, and I don\u2019t know how to stop it.\"\n\nOutput only the schema as a JSON object.\n\n```\n{\n  \"suicidal_thoughts\": 4,\n  \"insomnia\": 4,\n  \"feeling_insignificant\": 4,\n  \"anxiety\": 3\n}\n```",
+    "schema": {
+      "suicidal_thoughts": 4,
+      "insomnia": 4,
+      "feeling_insignificant": 4,
+      "anxiety": 3
+    },
+    "score_result": {
+      "score": 0.11,
+      "matched": [
+        "suicidal_thoughts"
+      ],
+      "missing": [
+        "self_worth",
+        "energy_level",
+        "sleep_problems",
+        "concentration_difficulty",
+        "feeling_down",
+        "appetite_change",
+        "motor_activity_change",
+        "loss_of_interest"
+      ],
+      "extra": [
+        "feeling_insignificant",
+        "anxiety",
+        "insomnia"
+      ],
+      "total_keys": 4
+    }
+  }
+]
