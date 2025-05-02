@@ -88,6 +88,7 @@ def run_schema_eval_on_samples(hf_client, samples: List[str]):
         prompt = build_prompt_from_input(text)
         try:
             response = hf_client.generate(prompt)
+            print("RESPONSE", response)
             raw_output = response[0]["generated_text"]
             extracted_schema = extract_json_schema(raw_output)
             score_result = score_generated_schema(extracted_schema)
@@ -118,10 +119,50 @@ def run_schema_eval_on_samples(hf_client, samples: List[str]):
 
 
 
+def compute_overall_schema_metrics(results: List[dict]):
+    y_true = []
+    y_pred = []
+
+    for r in results:
+        gold_keys = set(EXPECTED_PHQ9_KEYS)
+        pred_keys = set(r["schema"].keys())
+
+        for key in gold_keys:
+            y_true.append(1)
+            y_pred.append(1 if key in pred_keys else 0)
+
+        for key in pred_keys:
+            if key not in gold_keys:
+                y_true.append(0)
+                y_pred.append(1)
+
+    precision = precision_score(y_true, y_pred, zero_division=0)
+    recall = recall_score(y_true, y_pred, zero_division=0)
+    f1 = f1_score(y_true, y_pred, zero_division=0)
+    accuracy = accuracy_score(y_true, y_pred)
+
+    print("\n=== Overall Schema Metrics ===")
+    print(f"Accuracy: {accuracy:.2f}")
+    print(f"Precision: {precision:.2f}")
+    print(f"Recall: {recall:.2f}")
+    print(f"F1 Score: {f1:.2f}")
+
+    return {
+        "accuracy": accuracy,
+        "precision": precision,
+        "recall": recall,
+        "f1_score": f1
+    }
+
+
 if __name__ == "__main__":
     hf_client = HuggingFaceAPIClient(HUGGINGFACE_KEY2)
     
     results = run_schema_eval_on_samples(hf_client, DEPRESSION_INPUTS)
+    metrics = compute_overall_schema_metrics(results)
+
+    with open("output.json", "w") as json_file:
+        json.dump(metrics, json_file, indent=4)
 
     # Optionally save to file
     with open("schema_eval_output.json", "w") as f:
